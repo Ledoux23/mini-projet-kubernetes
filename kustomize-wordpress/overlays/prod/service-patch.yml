@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+spec:
+  sessionAffinity: ClientIP
+#Ce patch conserve le Service MySQL en ClusterIP et configure l'affinité de session du Service

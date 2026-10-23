@@ -1,0 +1,16 @@
+#resources:
+#  - mysql-pv.yml
+#  - mysql-pvc.yml
+#  - mysql-secret.yml
+#  - mysql-deploy.yml
+#  - mysql-svc.yml
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - mysql-deploy.yml
+  - mysql-pv.yml
+  - mysql-pvc.yml
+  - mysql-secret.yml
+  - mysql-svc.yml

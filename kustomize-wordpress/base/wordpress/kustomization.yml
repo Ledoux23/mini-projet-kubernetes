@@ -1,0 +1,11 @@
+#resources:
+#  - wp-secret.yml
+#  - wp-deploy.yml
+#  - wp-svc.yml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - wp-deploy.yml
+  - wp-secret.yml
+  - wp-svc.yml

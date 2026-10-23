@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      nodePort: 30001
+#Ce patch configure l'accès externe à WordPress
+#Le Service WordPress sera accessible via un NodePort sur le nœud Kubernetes, 
+#sous réserve que le réseau de l'environnement Minikube permette cet accès.

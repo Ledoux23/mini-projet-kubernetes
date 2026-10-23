@@ -1,0 +1,43 @@
+#resources:
+#  - ../../base/mysql
+#  - ../../base/wordpress
+  
+  
+#patches:
+#  - target:
+#      groups: apps
+#      version: v1
+#      kind: Deployment
+#      name: wp-deploy
+#    patch:
+#      - op: replace
+#        path: /spec/replicas
+#        value: 3
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: mysql-deployment
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: wp-deploy
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+#L'environnement dev utilisera une seule instance de MySQL et 2 instances de WordPress. 
+#Le patch remplace les valeurs de spec.replicas sans modifier les manifests de base.
